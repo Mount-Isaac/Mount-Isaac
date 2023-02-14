@@ -15,3 +15,5 @@
     <img src="https://img.shields.io/badge/Twitter-blue?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter Badge"/>
   </a>
 </div>
+
+<img id="badges" align="centre" src="https://komarev.com/ghpvc/?username=Mount-Isaac&style=flat-square&color=blue" alt=""/>
