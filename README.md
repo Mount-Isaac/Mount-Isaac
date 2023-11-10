@@ -35,7 +35,7 @@ I am a Django Backend and Reactjs Developer <img src="https://media.giphy.com/me
 
 - :seedling: Exploring Technical Content Writing.
 
-- :zap: In my free time, I solve problems on LeetCode and read tech articles.
+- :zap: In my free time, I solve Data Structures and algorithms problems in LeetCode and blog tech articles.
 
 - :mailbox:How to reach me: [![Linkedin Badge](https://img.shields.io/badge/-kakbar-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/isaac-kyalo-60ab531b4/")
 ---
