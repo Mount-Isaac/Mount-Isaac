@@ -31,7 +31,7 @@
 I am a Django, Django REST and Reactjs web developer <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30">.
 
 
-- :telescope: I’m a Fullstack developer contributing to frontend and backend for building web applications.
+- :telescope:  As a Full-stack developer I leverage my frontend and backend skillset by building web applications.
 
 - :seedling: Exploring Technical Content Writing.
 
