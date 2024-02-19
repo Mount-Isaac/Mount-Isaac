@@ -27,9 +27,9 @@
 </div>
 
 ---
-### 🍀: About Me :
+### About Me 🍀 :
 
-- #### A Full-stack developer
+- #### Full-stack website developer 💻
 - :telescope: I leverage my frontend and backend skillset by building web applications.
 
 - :seedling: Exploring Technical Content Writing.
