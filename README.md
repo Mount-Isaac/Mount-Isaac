@@ -29,7 +29,8 @@
 ---
 ### 🍀: About Me :
 
-- :telescope:  As a Full-stack developer I leverage my frontend and backend skillset by building web applications.
+- #### A Full-stack developer
+- :telescope: I leverage my frontend and backend skillset by building web applications.
 
 - :seedling: Exploring Technical Content Writing.
 
