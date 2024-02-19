@@ -28,8 +28,6 @@
 
 ---
 ### 🍀: About Me :
-I am a Django, Django REST and Reactjs web developer <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30">.
-
 
 - :telescope:  As a Full-stack developer I leverage my frontend and backend skillset by building web applications.
 
