@@ -62,11 +62,3 @@
 [![GitHub Streak](http://github-readme-streak-stats.herokuapp.com?user=Mount-Isaac&theme=dark&background=000000)](https://git.io/streak-stats)
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Mount-Isaac&layout=compact&theme=vision-friendly-dark)](https://github.com/anuraghazra/github-readme-stats)
 
-
----
-### 📊 GitHub Stats:
-![](https://github-readme-stats.vercel.app/api?username=Mount-Isaac&theme=dark&hide_border=false&include_all_commits=true&count_private=false)<br/>
-![](https://github-readme-streak-stats.herokuapp.com/?user=Mount-Isaac&theme=dark&hide_border=false)<br/>
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=Mount-Isaac&theme=dark&hide_border=false&include_all_commits=true&count_private=false&layout=compact)
-
----
