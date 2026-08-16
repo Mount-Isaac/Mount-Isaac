@@ -164,12 +164,12 @@ multi second response times into an asynchronous architecture using:
                                                         │
                          ┌──────────────────────────────┼──────────────────────────────┐
                          │                              │                              │
-                    ~100K req/s                   ~100K req/s                   ~100K req/s
+                    ~300K req/s                   ~300K req/s                   ~300K req/s
                          ▼                              ▼                              ▼
               ┌──────────────────┐           ┌──────────────────┐           ┌──────────────────┐
               │    SERVER 01     │           │    SERVER 02     │           │    SERVER 03     │
               │                  │           │                  │           │                  │
-              │  Kong / HAProxy  │           │  Kong / HAProxy  │           │  Kong / HAProxy  │
+              │     HAProxy      │           │     HAProxy      │           │     HAProxy      │
               │        │         │           │        │         │           │        │         │
               │    Upstream      │           │    Upstream      │           │    Upstream      │
               │        │         │           │        │         │           │        │         │
