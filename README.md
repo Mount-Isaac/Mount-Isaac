@@ -149,23 +149,362 @@ One of the systems I worked on evolved from a synchronous implementation with
 multi second response times into an asynchronous architecture using:
 
 ```text
-                    +------------------+
-                    |   API Gateway    |
-                    |      Kong        |
-                    +--------+---------+
-                             |
-                    +--------v---------+
-                    |     FastAPI      |
-                    |   Async APIs     |
-                    +--------+---------+
-                             |
-              +--------------+--------------+
-              |              |              |
-        +-----v-----+  +-----v-----+  +-----v-----+
-        |   Redis   |  |   Kafka   |  | RabbitMQ  |
-        |  Cluster  |  |           |  |           |
-        +-----------+  +-----------+  +-----------+
-                             |
-                       +-----v-----+
-                       | InfluxDB  |
-                       +-----------+
+                                      ┌─────────────────────────────────────────────┐
+                                      │              GLOBAL USERS                  │
+                                      │                                             │
+                                      │  Africa          Europe          Asia       │
+                                      │  ~100K           ~100K           ~100K      │
+                                      │     │               │               │       │
+                                      │  Mobile / Web / IoT / Third Party Clients  │
+                                      └───────────────┬─────────────────────────────┘
+                                                      │
+                                                      ▼
+                                      ┌──────────────────────────────┐
+                                      │       DNS / GLOBAL LB        │
+                                      │                              │
+                                      │ Geo Routing + Health Checks  │
+                                      │ Failover + Traffic Steering  │
+                                      └──────────────┬───────────────┘
+                                                     │
+                       ┌─────────────────────────────┼─────────────────────────────┐
+                       │                             │                             │
+                       ▼                             ▼                             ▼
+             ┌──────────────────┐          ┌──────────────────┐          ┌──────────────────┐
+             │   AFRICA REGION  │          │   EUROPE REGION  │          │    ASIA REGION   │
+             │      ACTIVE      │          │      ACTIVE      │          │      ACTIVE      │
+             └────────┬─────────┘          └────────┬─────────┘          └────────┬─────────┘
+                      │                             │                             │
+                      ▼                             ▼                             ▼
+             ┌──────────────────┐          ┌──────────────────┐          ┌──────────────────┐
+             │ Regional HAProxy │          │ Regional HAProxy │          │ Regional HAProxy │
+             │ / Cloud LB       │          │ / Cloud LB       │          │ / Cloud LB       │
+             └────────┬─────────┘          └────────┬─────────┘          └────────┬─────────┘
+                      │                             │                             │
+             ┌────────┼────────┐           ┌────────┼────────┐           ┌────────┼────────┐
+             │        │        │           │        │        │           │        │        │
+             ▼        ▼        ▼           ▼        ▼        ▼           ▼        ▼        ▼
+          Server   Server   Server      Server   Server   Server      Server   Server   Server
+           #1       #2       #3          #1       #2       #3          #1       #2       #3
+             │        │        │           │        │        │           │        │        │
+             ▼        ▼        ▼           ▼        ▼        ▼           ▼        ▼        ▼
+       ┌──────────────────────┐    ┌──────────────────────┐    ┌──────────────────────┐
+       │    KONG CLUSTER      │    │    KONG CLUSTER      │    │    KONG CLUSTER      │
+       │                      │    │                      │    │                      │
+       │ K1   K2   K3         │    │ K1   K2   K3         │    │ K1   K2   K3         │
+       │                      │    │                      │    │                      │
+       │ Rate Limit           │    │ Rate Limit           │    │ Rate Limit           │
+       │ Auth / JWT           │    │ Auth / JWT           │    │ Auth / JWT           │
+       │ Routing              │    │ Routing              │    │ Routing              │
+       │ Circuit Breaking     │    │ Circuit Breaking     │    │ Circuit Breaking     │
+       └──────────┬───────────┘    └──────────┬───────────┘    └──────────┬───────────┘
+                  │                           │                           │
+                  ▼                           ▼                           ▼
+       ┌──────────────────────┐    ┌──────────────────────┐    ┌──────────────────────┐
+       │  UPSTREAM SERVICES   │    │  UPSTREAM SERVICES   │    │  UPSTREAM SERVICES   │
+       │                      │    │                      │    │                      │
+       │ Service Discovery    │    │ Service Discovery    │    │ Service Discovery    │
+       │ Health Checks        │    │ Health Checks        │    │ Health Checks        │
+       │ Load Balancing       │    │ Load Balancing       │    │ Load Balancing       │
+       └──────────┬───────────┘    └──────────┬───────────┘    └──────────┬───────────┘
+                  │                           │                           │
+                  └───────────────────────────┼───────────────────────────┘
+                                              │
+                                              ▼
+                         ┌─────────────────────────────────────────┐
+                         │         MICROSERVICE PLATFORM           │
+                         │                                         │
+                         │  ┌──────────┐  ┌──────────┐            │
+                         │  │ Auth     │  │ User     │            │
+                         │  │ Service  │  │ Service  │            │
+                         │  └──────────┘  └──────────┘            │
+                         │                                         │
+                         │  ┌──────────┐  ┌──────────┐            │
+                         │  │ Device   │  │ Data     │            │
+                         │  │ Service  │  │ Service  │            │
+                         │  └──────────┘  └──────────┘            │
+                         │                                         │
+                         │  ┌──────────┐  ┌──────────┐            │
+                         │  │ Billing  │  │ Notify   │            │
+                         │  │ Service  │  │ Service  │            │
+                         │  └──────────┘  └──────────┘            │
+                         │                                         │
+                         │  ┌──────────┐  ┌──────────┐            │
+                         │  │Analytics │  │ Other    │            │
+                         │  │ Service  │  │ Services │            │
+                         │  └──────────┘  └──────────┘            │
+                         └────────────────┬────────────────────────┘
+                                          │
+                     ┌────────────────────┼────────────────────┐
+                     │                    │                    │
+                     ▼                    ▼                    ▼
+          ┌─────────────────┐   ┌─────────────────┐   ┌─────────────────┐
+          │   REDIS CLUSTER │   │ RABBITMQ CLUSTER│   │   EMQX CLUSTER  │
+          │                 │   │                 │   │                 │
+          │ Cache           │   │ Task Queues     │   │ MQTT Broker     │
+          │ Sessions        │   │ Async Jobs      │   │ IoT Devices     │
+          │ Rate Limits     │   │ Background Work │   │ Device Events   │
+          │ Distributed     │   │ Retry / DLQ     │   │ Pub/Sub         │
+          │ State           │   │                 │   │                 │
+          └────────┬────────┘   └────────┬────────┘   └────────┬────────┘
+                   │                     │                     │
+                   │                     │                     │
+                   └─────────────────────┼─────────────────────┘
+                                         │
+                                         ▼
+                          ┌─────────────────────────────┐
+                          │       APACHE KAFKA          │
+                          │        HA CLUSTER           │
+                          │                             │
+                          │ Broker 1  Broker 2  Broker 3│
+                          │                             │
+                          │ ┌─────────────────────────┐ │
+                          │ │ device-events           │ │
+                          │ │ P0 P1 P2 P3 P4 P5 ...   │ │
+                          │ └─────────────────────────┘ │
+                          │                             │
+                          │ ┌─────────────────────────┐ │
+                          │ │ user-events             │ │
+                          │ │ P0 P1 P2 P3 P4 P5 ...   │ │
+                          │ └─────────────────────────┘ │
+                          │                             │
+                          │ ┌─────────────────────────┐ │
+                          │ │ audit-events            │ │
+                          │ │ P0 P1 P2 P3 P4 P5 ...   │ │
+                          │ └─────────────────────────┘ │
+                          │                             │
+                          │ Replication + Consumer      │
+                          │ Groups + Offset Tracking    │
+                          └──────────────┬──────────────┘
+                                         │
+                   ┌─────────────────────┼──────────────────────┐
+                   │                     │                      │
+                   ▼                     ▼                      ▼
+          ┌─────────────────┐   ┌─────────────────┐    ┌─────────────────┐
+          │ Kafka Consumers │   │ Kafka Consumers │    │ Kafka Consumers │
+          │                 │   │                 │    │                 │
+          │ Microservices   │   │ Stream Workers  │    │ Analytics       │
+          │ Consumer Group  │   │ Consumer Group  │    │ Consumer Group  │
+          └────────┬────────┘   └────────┬────────┘    └────────┬────────┘
+                   │                     │                      │
+                   │                     │                      │
+                   │          ┌──────────┴───────────┐          │
+                   │          │                      │          │
+                   ▼          ▼                      ▼          ▼
+          ┌─────────────┐ ┌─────────────┐     ┌─────────────┐ ┌─────────────┐
+          │ PostgreSQL  │ │  MongoDB    │     │ Cassandra   │ │  InfluxDB   │
+          │             │ │             │     │             │ │             │
+          │ OLTP        │ │ Documents   │     │ High Write  │ │ Time Series │
+          │ Transactions│ │ Flexible    │     │ Distributed │ │ Telemetry   │
+          │ Read Replica│ │ Data        │     │ Data        │ │ Metrics     │
+          └──────┬──────┘ └─────────────┘     └──────┬──────┘ └──────┬──────┘
+                 │                                    │               │
+                 │                                    │               │
+                 └──────────────────┬─────────────────┴───────────────┘
+                                    │
+                                    ▼
+                         ┌──────────────────────────┐
+                         │       DATA LAKE          │
+                         │       S3 / GCS            │
+                         │                          │
+                         │ Raw Data                 │
+                         │ Event Data               │
+                         │ Historical Data          │
+                         │ Logs / Telemetry         │
+                         └────────────┬─────────────┘
+                                      │
+                                      ▼
+                         ┌──────────────────────────┐
+                         │       DATABRICKS         │
+                         │                          │
+                         │ Spark Processing         │
+                         │ ETL / ELT                │
+                         │ Stream Processing        │
+                         │ Data Transformation      │
+                         │ Feature Engineering      │
+                         └────────────┬─────────────┘
+                                      │
+                                      ▼
+                         ┌──────────────────────────┐
+                         │     ANALYTICS / BI       │
+                         │                          │
+                         │ Dashboards               │
+                         │ Reporting                │
+                         │ ML / Data Science        │
+                         └──────────────────────────┘
+
+
+══════════════════════════════════════════════════════════════════════════════════
+                         DEPLOYMENT ARCHITECTURE
+══════════════════════════════════════════════════════════════════════════════════
+
+                              Git Push / Pull Request
+                                        │
+                                        ▼
+                              ┌───────────────────┐
+                              │   CI/CD Pipeline  │
+                              │                   │
+                              │ Test              │
+                              │ Lint              │
+                              │ Security Scan     │
+                              │ Build Image       │
+                              │ Push Registry     │
+                              └─────────┬─────────┘
+                                        │
+                                        ▼
+                              ┌───────────────────┐
+                              │ Container Registry│
+                              └─────────┬─────────┘
+                                        │
+                         ┌──────────────┼──────────────┐
+                         │              │              │
+                         ▼              ▼              ▼
+                  ┌────────────┐ ┌────────────┐ ┌────────────┐
+                  │   CANARY   │ │ BLUE       │ │   GREEN    │
+                  │            │ │            │ │            │
+                  │ 5% traffic │ │ Production │ │ New Version│
+                  │            │ │            │ │            │
+                  └─────┬──────┘ └─────┬──────┘ └─────┬──────┘
+                        │              │              │
+                        ▼              │              │
+                 Health Metrics       │              │
+                 Error Rate           │              │
+                 Latency              │              │
+                 Crash Rate           │              │
+                        │              │              │
+                 ┌──────┴──────┐       │              │
+                 │             │       │              │
+              Healthy       Failed     │              │
+                 │             │       │              │
+                 ▼             ▼       │              │
+             Gradual       Rollback    │              │
+             Increase                  │              │
+                 │                     │              │
+                 └──────────────┬──────┴──────────────┘
+                                │
+                                ▼
+                         Promote New Version
+
+
+══════════════════════════════════════════════════════════════════════════════════
+                           ANDROID UPDATE PIPELINE
+══════════════════════════════════════════════════════════════════════════════════
+
+                        New Android Release
+                                │
+                                ▼
+                       ┌──────────────────┐
+                       │      CANARY      │
+                       │                  │
+                       │ 1% → 5% → 10%   │
+                       │ → 25% → 50%      │
+                       │ → 100%           │
+                       └────────┬─────────┘
+                                │
+                       ┌────────┴────────┐
+                       │                 │
+                    Healthy           Failure
+                       │                 │
+                       ▼                 ▼
+                  Increase %         Stop rollout
+                                         │
+                                         ▼
+                                      Rollback
+
+
+══════════════════════════════════════════════════════════════════════════════════
+                         RELIABILITY / FAULT TOLERANCE
+══════════════════════════════════════════════════════════════════════════════════
+
+   Failure Domain                         Protection
+
+   ┌─────────────────┐                    ┌──────────────────────────────┐
+   │ Server Failure  │ ──────────────────► │ Load Balancer Health Checks  │
+   └─────────────────┘                    │ Automatic Traffic Removal    │
+                                           └──────────────────────────────┘
+
+   ┌─────────────────┐                    ┌──────────────────────────────┐
+   │ Service Failure │ ──────────────────► │ Kong Routing / Retries       │
+   └─────────────────┘                    │ Circuit Breakers              │
+                                           │ Timeouts                      │
+                                           └──────────────────────────────┘
+
+   ┌─────────────────┐                    ┌──────────────────────────────┐
+   │ Region Failure  │ ──────────────────► │ Global LB Failover           │
+   └─────────────────┘                    │ Cross Region Routing         │
+                                           └──────────────────────────────┘
+
+   ┌─────────────────┐                    ┌──────────────────────────────┐
+   │ Kafka Failure   │ ──────────────────► │ Broker Replication            │
+   └─────────────────┘                    │ Partition Replication         │
+                                           │ Consumer Offset Recovery      │
+                                           └──────────────────────────────┘
+
+   ┌─────────────────┐                    ┌──────────────────────────────┐
+   │ Redis Failure   │ ─────────────────► │ Redis Cluster                 │
+   └─────────────────┘                    │ Replicas / Failover           │
+                                           └──────────────────────────────┘
+
+   ┌─────────────────┐                    ┌──────────────────────────────┐
+   │ Queue Failure   │ ─────────────────► │ RabbitMQ Cluster              │
+   └─────────────────┘                    │ Retry + Dead Letter Queues    │
+                                           └──────────────────────────────┘
+
+   ┌─────────────────┐                    ┌──────────────────────────────┐
+   │ DB Failure      │ ─────────────────► │ Replicas / Backups             │
+   └─────────────────┘                    │ Automated Recovery             │
+                                           └──────────────────────────────┘
+
+
+══════════════════════════════════════════════════════════════════════════════════
+                              CORE PRINCIPLES
+══════════════════════════════════════════════════════════════════════════════════
+
+   Multi Region
+        │
+        ├── Active / Active
+        ├── Geographic Routing
+        └── Cross Region Failover
+
+   High Availability
+        │
+        ├── Multiple Servers
+        ├── Multiple Gateway Instances
+        ├── Replicated Databases
+        └── Distributed Message Brokers
+
+   Scalability
+        │
+        ├── Horizontal Scaling
+        ├── Stateless APIs
+        ├── Kafka Partitioning
+        ├── Consumer Groups
+        ├── Redis Cluster
+        └── Independent Microservices
+
+   Reliability
+        │
+        ├── Health Checks
+        ├── Timeouts
+        ├── Retries with Backoff
+        ├── Circuit Breakers
+        ├── Dead Letter Queues
+        ├── Graceful Degradation
+        └── Automated Rollbacks
+
+   Deployment Safety
+        │
+        ├── Canary Releases
+        ├── Blue / Green Deployments
+        ├── Feature Flags
+        ├── Automated Testing
+        └── Zero / Minimal Downtime Releases
+
+   Observability
+        │
+        ├── Metrics
+        ├── Distributed Tracing
+        ├── Centralized Logs
+        ├── Kafka Lag Monitoring
+        ├── Infrastructure Monitoring
+        └── Alerting
+```
