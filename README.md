@@ -1,82 +1,159 @@
 <div align="center">
-  <img src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif" width="100"/>
-  
-  <div id="badges">
-    <a href="https://www.linkedin.com/in/isaac-kyalo-60ab531b4/">
-      <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
-    </a>
-    <a href="https://twitter.com/MtIsaac2">
-      <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=orange" alt="Twitter"/>
-    </a>
-  </div>
-  
-  <img src="https://komarev.com/ghpvc/?username=Mount-Isaac&style=flat-square&color=blue" alt="Profile views"/>
-  
-  <h1>
-    Hey there
-    <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="30px"/>
-  </h1>
-</div>
 
-<div align="center">
-  <img src="https://media.giphy.com/media/dWesBcTLavkZuG35MI/giphy.gif" width="600" height="300"/>
+# Isaac Kyalo
+
+### Senior Backend Engineer | Python | Distributed Systems | Cloud Infrastructure
+
+I build scalable backend systems, APIs, and infrastructure with a focus on
+performance, reliability, and clean architecture.
+
+<p>
+  <a href="https://www.linkedin.com/in/isaac-kyalo-60ab531b4/">
+    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
+  </a>
+  <a href="https://github.com/Mount-Isaac">
+    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" />
+  </a>
+  <a href="https://twitter.com/MtIsaac2">
+    <img src="https://img.shields.io/badge/Twitter-000000?style=for-the-badge&logo=x&logoColor=white" />
+  </a>
+</p>
+
+<img src="https://komarev.com/ghpvc/?username=Mount-Isaac&style=flat-square" />
+
 </div>
 
 ---
 
 ## About Me
 
-I'm a **Backend & DevOps Engineer** specializing in building scalable web applications and infrastructure.
+I'm a Senior Backend Engineer focused on building production systems that
+handle real world traffic, distributed workloads, and evolving requirements.
 
-- **Backend specialist** with Python, Flask & FastAPI
-- **DevOps enthusiast** working with AWS, Docker, and CI/CD pipelines
-- Full-stack capable with modern frontend technologies
-- Technical writer sharing knowledge through blogs and documentation
-- Active problem solver on LeetCode, constantly improving DSA skills
-- **Reach me:** [![LinkedIn](https://img.shields.io/badge/-Isaac_Kyalo-0077B5?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/isaac-kyalo-60ab531b4/)
+My primary ecosystem is Python, with experience across backend frameworks,
+databases, messaging systems, caching, containers, cloud infrastructure, and
+CI/CD.
+
+I also build full stack applications when needed using React, Next.js,
+Node.js, and TypeScript.
+
+### What I do
+
+* Build high performance REST APIs and backend services
+* Design distributed and event driven systems
+* Develop microservices and asynchronous workloads
+* Design and optimize relational databases
+* Build caching and messaging architectures
+* Containerize and deploy production applications
+* Build CI/CD pipelines and deployment automation
+* Work with AWS and Google Cloud infrastructure
+* Design API gateway and reverse proxy architectures
+* Build full stack applications and SaaS products
+* Develop developer tools and open source software
+* Integrate AI and LLM capabilities into applications
 
 ---
 
 ## Tech Stack
 
-#### Backend & DevOps
-<div>
-  <img src="https://github.com/devicons/devicon/blob/master/icons/python/python-original.svg" title="Python" alt="Python" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/django/django-plain.svg" title="Django" alt="Django" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/flask/flask-original.svg" title="Flask" alt="Flask" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/fastapi/fastapi-original.svg" title="FastAPI" alt="FastAPI" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/docker/docker-original.svg" title="Docker" alt="Docker" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/kubernetes/kubernetes-plain.svg" title="Kubernetes" alt="Kubernetes" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" title="AWS" alt="AWS" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/postgresql/postgresql-original.svg" title="PostgreSQL" alt="PostgreSQL" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/mysql/mysql-original.svg" title="MySQL" alt="MySQL" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/redis/redis-original.svg" title="Redis" alt="Redis" width="40" height="40"/>&nbsp;
-</div>
+### Backend
 
-#### Frontend & Tools
-<div>
-  <img src="https://github.com/devicons/devicon/blob/master/icons/react/react-original.svg" title="React" alt="React" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg" title="JavaScript" alt="JavaScript" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/html5/html5-original.svg" title="HTML5" alt="HTML" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-original.svg" title="CSS3" alt="CSS" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/git/git-original.svg" title="Git" alt="Git" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/linux/linux-original.svg" title="Linux" alt="Linux" width="40" height="40"/>&nbsp;
-</div>
+<p>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="45" title="Python" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" width="45" title="Django" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" width="45" title="FastAPI" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" width="45" title="Flask" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width="45" title="Node.js" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" width="45" title="Express" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" width="45" title="TypeScript" />
+</p>
+
+Python | Django | Django REST Framework | FastAPI | Flask | Node.js | Express | TypeScript
+
+### Frontend
+
+<p>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="45" title="React" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" width="45" title="Next.js" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="45" title="JavaScript" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="45" title="HTML5" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="45" title="CSS3" />
+</p>
+
+React | Next.js | JavaScript | TypeScript | HTML5 | CSS3
+
+### Databases
+
+<p>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" width="45" title="PostgreSQL" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="45" title="MySQL" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" width="45" title="Redis" />
+</p>
+
+PostgreSQL | MySQL | Redis | SQLAlchemy | Alembic
+
+### Messaging and Distributed Systems
+
+<p>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rabbitmq/rabbitmq-original.svg" width="45" title="RabbitMQ" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg" width="45" title="Apache Kafka" />
+</p>
+
+RabbitMQ | Apache Kafka | Redis | WebSockets | Async Python | Event Driven Architecture | Microservices
+
+### Cloud and Infrastructure
+
+<p>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="45" title="Docker" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" width="45" title="Kubernetes" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" width="55" title="AWS" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" width="45" title="Google Cloud" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" width="45" title="Nginx" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" width="45" title="Linux" />
+</p>
+
+Docker | Docker Compose | Kubernetes | AWS | GCP | Nginx | Kong | Linux | EC2 | RDS | S3 | Vercel
+
+### CI/CD and Developer Tools
+
+<p>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="45" title="Git" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="45" title="GitHub" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg" width="45" title="GitLab" />
+</p>
+
+Git | GitHub Actions | GitLab CI/CD | Docker Compose | CI/CD | Infrastructure Automation
 
 ---
 
-### GitHub Stats
+## Engineering
 
-<div align="center">
-  <img src="http://github-readme-streak-stats.herokuapp.com?user=Mount-Isaac&theme=dark&background=000000" alt="GitHub Streak"/>
-</div>
+### Distributed Systems
 
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Mount-Isaac&layout=compact&theme=vision-friendly-dark" alt="Top Languages"/>
-</div>
+I've worked on backend systems supporting 500K+ devices across multiple
+African markets.
 
----
+One of the systems I worked on evolved from a synchronous implementation with
+multi second response times into an asynchronous architecture using:
 
-<div align="center">
-  <i>Let's build something amazing together.</i>
-</div>
+```text
+                    +------------------+
+                    |   API Gateway    |
+                    |      Kong        |
+                    +--------+---------+
+                             |
+                    +--------v---------+
+                    |     FastAPI      |
+                    |   Async APIs     |
+                    +--------+---------+
+                             |
+              +--------------+--------------+
+              |              |              |
+        +-----v-----+  +-----v-----+  +-----v-----+
+        |   Redis   |  |   Kafka   |  | RabbitMQ  |
+        |  Cluster  |  |           |  |           |
+        +-----------+  +-----------+  +-----------+
+                             |
+                       +-----v-----+
+                       | InfluxDB  |
+                       +-----------+
