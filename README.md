@@ -15,7 +15,7 @@ performance, reliability, and clean architecture.
     <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" />
   </a>
   <a href="https://twitter.com/MtIsaac2">
-    <img src="https://img.shields.io/badge/Twitter-000000?style=for-the-badge&logo=x&logoColor=white" />
+    <img src="https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white" />
   </a>
 </p>
 
@@ -31,8 +31,8 @@ I'm a Senior Backend Engineer focused on building production systems that
 handle real world traffic, distributed workloads, and evolving requirements.
 
 My primary ecosystem is Python, with experience across backend frameworks,
-databases, messaging systems, caching, containers, cloud infrastructure, and
-CI/CD.
+databases, messaging systems, caching, containers, cloud infrastructure,
+and CI/CD.
 
 I also build full stack applications when needed using React, Next.js,
 Node.js, and TypeScript.
@@ -42,8 +42,9 @@ Node.js, and TypeScript.
 * Build high performance REST APIs and backend services
 * Design distributed and event driven systems
 * Develop microservices and asynchronous workloads
-* Design and optimize relational databases
+* Design and optimize relational and NoSQL databases
 * Build caching and messaging architectures
+* Work with MQTT based systems and IoT infrastructure
 * Containerize and deploy production applications
 * Build CI/CD pipelines and deployment automation
 * Work with AWS and Google Cloud infrastructure
@@ -87,19 +88,28 @@ React | Next.js | JavaScript | TypeScript | HTML5 | CSS3
 <p>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" width="45" title="PostgreSQL" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="45" title="MySQL" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" width="45" title="MongoDB" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" width="45" title="Redis" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cassandra/cassandra-original.svg" width="45" title="Cassandra" />
 </p>
 
-PostgreSQL | MySQL | Redis | SQLAlchemy | Alembic
+PostgreSQL | MySQL | MongoDB | Cassandra | Redis | Supabase | SQLAlchemy | Alembic
 
 ### Messaging and Distributed Systems
 
 <p>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rabbitmq/rabbitmq-original.svg" width="45" title="RabbitMQ" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg" width="45" title="Apache Kafka" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mqtt/mqtt-original.svg" width="45" title="MQTT" />
 </p>
 
-RabbitMQ | Apache Kafka | Redis | WebSockets | Async Python | Event Driven Architecture | Microservices
+RabbitMQ | Apache Kafka | MQTT | EMQX | Redis | WebSockets | Async Python |
+Event Driven Architecture | Microservices
+
+### Backend Platforms and Services
+
+Supabase | PostgreSQL | Authentication | Row Level Security | Storage |
+Realtime APIs
 
 ### Cloud and Infrastructure
 
@@ -112,7 +122,8 @@ RabbitMQ | Apache Kafka | Redis | WebSockets | Async Python | Event Driven Archi
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" width="45" title="Linux" />
 </p>
 
-Docker | Docker Compose | Kubernetes | AWS | GCP | Nginx | Kong | Linux | EC2 | RDS | S3 | Vercel
+Docker | Docker Compose | Kubernetes | AWS | GCP | Supabase | Nginx | Kong |
+Linux | EC2 | RDS | S3 | Vercel
 
 ### CI/CD and Developer Tools
 
@@ -122,7 +133,8 @@ Docker | Docker Compose | Kubernetes | AWS | GCP | Nginx | Kong | Linux | EC2 | 
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg" width="45" title="GitLab" />
 </p>
 
-Git | GitHub Actions | GitLab CI/CD | Docker Compose | CI/CD | Infrastructure Automation
+Git | GitHub Actions | GitLab CI/CD | Docker Compose | CI/CD |
+Infrastructure Automation
 
 ---
 
