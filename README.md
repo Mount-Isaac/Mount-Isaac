@@ -2,7 +2,7 @@
 
 # Isaac Kyalo
 
-### Senior Backend Engineer | Python | Distributed Systems | Cloud Infrastructure
+### Senior Software Engineer | Python | Distributed Systems | Cloud Infrastructure
 
 I build scalable backend systems, APIs, and infrastructure with a focus on
 performance, reliability, and clean architecture.
