@@ -142,11 +142,7 @@ Infrastructure Automation
 
 ### Distributed Systems
 
-I've worked on backend systems supporting 500K+ devices across multiple
-African markets.
-
-One of the systems I worked on evolved from a synchronous implementation with
-multi second response times into an asynchronous architecture using:
+A multi-tenant IOT system implementation with microseconds response time using an asynchronous architecture:
 
 ```text
                          ┌──────────────────────────────────────────────────────────────┐
